@@ -1,2 +1,1 @@
-# java-book
-Java Book Exercises
+# Java Book
