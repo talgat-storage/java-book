@@ -6,10 +6,10 @@ public class BandMatrix {
         for (int row = 0; row < n; row++) {
             for (int col = 0; col < n; col++) {
                 if (Math.abs(col - row) > width) {
-                    System.out.print("0 ");
+                    System.out.print("0  ");
                 }
                 else {
-                    System.out.print("* ");
+                    System.out.print("*  ");
                 }
             }
             System.out.println();
