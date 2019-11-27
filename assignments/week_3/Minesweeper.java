@@ -7,13 +7,12 @@ public class Minesweeper {
         int[][] matrix = new int[m][n];
 
         for (int i = 0; i < k; i++) {
-            int row = (int) (Math.random() * m);
-            int col = (int) (Math.random() * n);
-
-            if (matrix[row][col] == -1) {
-                i--;
-                continue;
-            }
+            int r, row, col;
+            do {
+                r = (int) (Math.random() * m * n);
+                row = r / n;
+                col = r % n;
+            } while (matrix[row][col] == -1);
 
             matrix[row][col] = -1;
             if (row - 1 >= 0 && col - 1 >= 0 && matrix[row - 1][col - 1] != -1) {
@@ -47,10 +46,10 @@ public class Minesweeper {
         for (int row = 0; row < m; row++) {
             for (int col = 0; col < n; col++) {
                 if (matrix[row][col] == -1) {
-                    System.out.print("* ");
+                    System.out.print("*  ");
                 }
                 else {
-                    System.out.print(matrix[row][col] + " ");
+                    System.out.print(matrix[row][col] + "  ");
                 }
             }
             System.out.println();
