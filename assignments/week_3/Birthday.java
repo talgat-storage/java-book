@@ -2,36 +2,36 @@ public class Birthday {
     public static void main(String[] args) {
         int n = Integer.parseInt(args[0]);
         int trials = Integer.parseInt(args[1]);
-        boolean[] inRoom = new boolean[n];
-        int i, j, k, r;
 
-        double totalSuccessCount = 0;
-        int numberOfPeople = 1;
-        while (2 * totalSuccessCount < trials) {
-            int successCount = 0;
-            for (i = 0; i < trials; i++) {
-                for (j = 0; j < inRoom.length; j++) {
-                    inRoom[j] = false;
+        int[] peopleCountFreq = new int[2 * n];
+        for (int trial = 0; trial < trials; trial++) {
+//            System.out.println("Trial: " + trial);
+
+            boolean[] birthdays = new boolean[n];
+
+            int peopleCount = 0;
+            while (true) {
+                peopleCount += 1;
+                int r = (int) (Math.random() * n);
+//                System.out.println("Birthday: " + r);
+
+                if (birthdays[r]) {
+                    break;
                 }
-                for (k = 0; k < numberOfPeople; k++) {
-                    r = (int) (Math.random() * n);
-                    if (inRoom[r]) {
-                        if (k == numberOfPeople - 1) {
-                            successCount += 1;
-                        }
-                        break;
-                    }
-                    inRoom[r] = true;
-                }
+                birthdays[r] = true;
             }
 
-            totalSuccessCount += successCount;
+//            System.out.println("Stopped after " + peopleCount + " person(s)");
 
-            System.out.println(numberOfPeople + "\t" + successCount + "\t" + totalSuccessCount / trials);
+            peopleCountFreq[peopleCount - 1] += 1;
+        }
 
-            numberOfPeople += 1;
+        int totalPeopleCount = 0;
+        for (int i = 0; i < 2 * n; i++) {
+            totalPeopleCount += peopleCountFreq[i];
 
-            if (numberOfPeople > n * 128) {
+            System.out.println((i + 1) + "\t" + peopleCountFreq[i] + "\t" + (double) totalPeopleCount / trials);
+            if (2 * totalPeopleCount >= trials) {
                 break;
             }
         }
