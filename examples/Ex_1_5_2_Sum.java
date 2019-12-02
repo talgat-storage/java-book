@@ -1,4 +1,4 @@
-public class Ex_1_5_2 {
+public class Ex_1_5_2_Sum {
     public static void main(String[] args) {
         StdOut.print("Type the first integer: ");
         int x = StdIn.readInt();
