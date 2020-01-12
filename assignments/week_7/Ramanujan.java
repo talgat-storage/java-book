@@ -3,7 +3,7 @@ public class Ramanujan {
         long firstCube, secondCube;
         int count = 0;
 
-        for (int i = 1; i <= Math.cbrt(n / 2.0); i++) {
+        for (long i = 1; i <= Math.cbrt(n); i++) {
             firstCube = i * i * i;
             secondCube = n - firstCube;
 
@@ -12,7 +12,7 @@ public class Ramanujan {
             }
         }
 
-        return count > 1;
+        return count > 2;
     }
 
     public static void main(String[] args) {

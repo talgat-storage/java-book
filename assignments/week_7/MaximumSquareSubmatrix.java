@@ -9,21 +9,21 @@ public class MaximumSquareSubmatrix {
 //    }
 
     public static int size(int[][] a) {
-        int[][] aCopy = a;
+        int[][] aCopy = new int[a.length][a.length];
         int min, ans = 0;
 
-//        for (int row = 0; row < a.length; row++) {
-//            for (int col = 0; col < a.length; col++) {
-//                aCopy[row][col] = a[row][col];
-//            }
-//        }
+        for (int row = 0; row < a.length; row++) {
+            for (int col = 0; col < a.length; col++) {
+                aCopy[row][col] = a[row][col];
+            }
+        }
 
         for (int row = 0; row < aCopy.length; row++) {
             for (int col = 0; col < aCopy.length; col++) {
                 if (aCopy[row][col] == 0) {
                     continue;
                 }
-                ans = 1;
+
                 if (row - 1 < 0 || col - 1 < 0) {
                     continue;
                 }
@@ -37,7 +37,11 @@ public class MaximumSquareSubmatrix {
                 }
 
                 aCopy[row][col] = min + 1;
+            }
+        }
 
+        for (int row = 0; row < aCopy.length; row++) {
+            for (int col = 0; col < aCopy.length; col++) {
                 if (aCopy[row][col] > ans) {
                     ans = aCopy[row][col];
                 }
@@ -58,6 +62,10 @@ public class MaximumSquareSubmatrix {
             }
         }
 
+//        printMatrix(a);
+
         StdOut.println(size(a));
+
+//        printMatrix(a);
     }
 }
