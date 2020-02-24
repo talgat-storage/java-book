@@ -18,7 +18,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public boolean isEmpty() {
-        return this.first != null;
+        return this.first == null;
     }
 
     public void push(Item item) {
@@ -59,7 +59,7 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
+        Stack<String> stack = new Stack<>();
 
         while (!StdIn.isEmpty()) {
             String str = StdIn.readString();
