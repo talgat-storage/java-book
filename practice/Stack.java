@@ -39,7 +39,11 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     private class StackIterator implements Iterator<Item> {
-        private Node current = first;
+        private Node current;
+
+        public StackIterator() {
+            current = first;
+        }
 
         public boolean hasNext() {
             return current != null;
