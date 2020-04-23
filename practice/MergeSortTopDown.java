@@ -1,5 +1,6 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class MergeSortTopDown {
     private static int count = 0;
@@ -19,7 +20,7 @@ public class MergeSortTopDown {
         helper(items, mid + 1, hi, aux);
 
         count += 1;
-        StdOut.println(count + ": Merge {lo: " + lo + ", hi: " + hi + "}");
+//        StdOut.println(count + ": Merge {lo: " + lo + ", hi: " + hi + "}");
 
         int p1 = lo;
         int p2 = mid + 1;
@@ -69,8 +70,13 @@ public class MergeSortTopDown {
             items[i] = StdRandom.uniform(n);
         }
 
+        Stopwatch timer = new Stopwatch();
+
         MergeSortTopDown.sort(items);
 
+        double elapsedTime = timer.elapsedTime();
+
         StdOut.println(isSorted(items) ? "Sorted" : "Not sorted");
+        StdOut.println("Elapsed time: " + elapsedTime);
     }
 }
